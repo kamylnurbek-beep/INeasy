@@ -3,53 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TikTok HD Pre-Encoder</title>
+    <title>TikTok HD Patcher</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Подключаем ffmpeg.wasm из CDN -->
     <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
     <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎬 TikTok HD Patcher</h1>
-            <p>Локальная обработка видео для максимального качества (1080p 60fps). Без серверов.</p>
-        </header>
+    <div class="app-container">
+        <div class="glass-card">
+            <div class="header">
+                <div class="logo">⚡️</div>
+                <h1>HD Patcher</h1>
+                <p>Обход сжатия TikTok • Локально</p>
+            </div>
 
-        <div class="card">
-            <div class="upload-zone" id="dropZone">
+            <div id="engineStatus" class="status-badge loading">
+                <span class="spinner"></span> Загрузка движка...
+            </div>
+
+            <label class="upload-btn" id="uploadLabel">
                 <input type="file" id="fileInput" accept="video/*" hidden>
-                <div class="upload-icon">📁</div>
-                <p>Нажмите, чтобы выбрать видео</p>
-                <span class="hint">Поддерживаются MP4, MOV, AVI</span>
-            </div>
+                <span>Выбрать видео</span>
+            </label>
 
-            <div id="fileInfo" class="hidden">
-                <p><strong>Файл:</strong> <span id="fileName"></span></p>
-                <p><strong>Размер:</strong> <span id="fileSize"></span></p>
-            </div>
-
-            <button id="processBtn" class="btn-primary hidden" disabled>Запустить обработку</button>
-
-            <div id="statusArea" class="hidden">
-                <div class="progress-container">
-                    <div id="progressBar" class="progress-bar"></div>
+            <div id="fileInfo" class="info-box hidden">
+                <div class="info-row">
+                    <span>Файл:</span>
+                    <strong id="fileName">-</strong>
                 </div>
-                <p id="statusText" class="status-text">Инициализация движка...</p>
+                <div class="info-row">
+                    <span>Размер:</span>
+                    <strong id="fileSize">-</strong>
+                </div>
+            </div>
+
+            <button id="processBtn" class="action-btn hidden" disabled>
+                Запустить патч
+            </button>
+
+            <div id="progressArea" class="hidden">
+                <div class="progress-track">
+                    <div id="progressBar" class="progress-fill"></div>
+                </div>
+                <p id="statusText" class="status-msg">Подготовка...</p>
             </div>
 
             <div id="resultArea" class="hidden">
-                <h3>✅ Готово!</h3>
-                <p>Видео оптимизировано (H.264, 20Mbps, 60fps).</p>
-                <a id="downloadLink" class="btn-download" download="tiktok_hd.mp4">Скачать видео</a>
+                <div class="success-icon">✅</div>
+                <h3>Патч применен!</h3>
+                <p>Видео готово к загрузке без потери качества.</p>
+                <a id="downloadLink" class="download-btn" download="tiktok_hd.mp4">Скачать файл</a>
+            </div>
+            
+            <div id="errorArea" class="hidden error-box">
+                <p>⚠️ Ошибка: Видео слишком большое или не хватило памяти iPhone. Попробуйте файл меньше 500 МБ.</p>
             </div>
         </div>
-
-        <footer>
-            <p>Работает локально на вашем устройстве. Видео никуда не отправляется.</p>
-        </footer>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
