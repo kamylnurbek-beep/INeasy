@@ -1,0 +1,13 @@
+{
+  "name": "tiktok-hd-patcher",
+  "version": "1.0.0",
+  "description": "Local browser-based video pre-encoder for TikTok (1080p 60fps)",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "test": "echo \"No tests required\""
+  },
+  "keywords": ["tiktok", "ffmpeg", "wasm", "video"],
+  "author": "You",
+  "license": "MIT"
+}
