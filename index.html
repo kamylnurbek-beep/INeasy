@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TikTok HD Pre-Encoder</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем ffmpeg.wasm из CDN -->
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.12.10/dist/umd/ffmpeg.js"></script>
+    <script src="https://unpkg.com/@ffmpeg/util@0.12.1/dist/umd/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 TikTok HD Patcher</h1>
+            <p>Локальная обработка видео для максимального качества (1080p 60fps). Без серверов.</p>
+        </header>
+
+        <div class="card">
+            <div class="upload-zone" id="dropZone">
+                <input type="file" id="fileInput" accept="video/*" hidden>
+                <div class="upload-icon">📁</div>
+                <p>Нажмите, чтобы выбрать видео</p>
+                <span class="hint">Поддерживаются MP4, MOV, AVI</span>
+            </div>
+
+            <div id="fileInfo" class="hidden">
+                <p><strong>Файл:</strong> <span id="fileName"></span></p>
+                <p><strong>Размер:</strong> <span id="fileSize"></span></p>
+            </div>
+
+            <button id="processBtn" class="btn-primary hidden" disabled>Запустить обработку</button>
+
+            <div id="statusArea" class="hidden">
+                <div class="progress-container">
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+                <p id="statusText" class="status-text">Инициализация движка...</p>
+            </div>
+
+            <div id="resultArea" class="hidden">
+                <h3>✅ Готово!</h3>
+                <p>Видео оптимизировано (H.264, 20Mbps, 60fps).</p>
+                <a id="downloadLink" class="btn-download" download="tiktok_hd.mp4">Скачать видео</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Работает локально на вашем устройстве. Видео никуда не отправляется.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
